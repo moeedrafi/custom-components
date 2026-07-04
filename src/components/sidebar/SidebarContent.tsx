@@ -79,6 +79,8 @@ export const SidebarContent = () => {
             alt="logo"
             width={50}
             height={50}
+            loading="eager"
+            priority
             className="w-12.5 h-12.5"
           />
         </Link>

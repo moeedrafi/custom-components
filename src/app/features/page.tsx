@@ -1,20 +1,30 @@
 "use client";
 import { useState } from "react";
-import { MenuIcon, SunIcon, UserIcon } from "lucide-react";
-import { CollapsibleSidebar } from "@/components/sidebar/CollapsibleSidebar";
+import { MobileSidebar } from "@/components/sidebar/MobileSidebar";
+import { MenuIcon, PanelLeftIcon, SunIcon, UserIcon } from "lucide-react";
+import { CollapsedDesktopSidebar } from "@/components/sidebar/collapse/CollapsedDesktopSidebar";
 
 export default function FeaturesPage() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 
   return (
     <div className="flex min-h-svh">
-      <CollapsibleSidebar isOpen={isOpen} />
+      <CollapsedDesktopSidebar collapsed={collapsed} />
+      <MobileSidebar isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
 
       <div className="flex-1 flex flex-col">
         <header className="p-5 bg-light flex justify-between border-b border-color">
           <button
-            onClick={() => setIsOpen((prev) => !prev)}
-            className="hover:text-gray-300"
+            onClick={() => setCollapsed((prev) => !prev)}
+            className="hidden lg:block hover:text-gray-300"
+          >
+            <PanelLeftIcon />
+          </button>
+
+          <button
+            className="lg:hidden hover:text-gray-300"
+            onClick={() => setMobileOpen(true)}
           >
             <MenuIcon />
           </button>
