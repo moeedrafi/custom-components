@@ -1,11 +1,10 @@
 "use client";
-import Link from "next/link";
 import { useState } from "react";
-import { TextInput } from "@/components/forms/TextInput";
 import { FormField } from "@/components/forms/FormField";
+import { TextInput } from "@/components/forms/TextInput";
 import { FormWrapper } from "@/components/forms/FormWrapper";
 
-export default function LoginPage() {
+export default function ForgotPasswordPage() {
   const [email, setEmail] = useState<string>("");
 
   const isEmailError = true;
@@ -15,10 +14,10 @@ export default function LoginPage() {
     <main>
       <div className="h-svh flex items-center justify-center">
         <FormWrapper
-          header="Login"
-          href="/register"
-          subHeading="Welcome Back"
-          label="Don't have an account?"
+          header="Forgot Password"
+          href="/login"
+          subHeading="Enter your email"
+          label="Go back?"
         >
           <form className="space-y-6">
             <FormField
@@ -40,28 +39,6 @@ export default function LoginPage() {
                 aria-describedby={emailError ? "email-error" : undefined}
               />
             </FormField>
-
-            <FormField label="Password" htmlFor="password" required error="">
-              <TextInput
-                required
-                id="password"
-                name="password"
-                type="password"
-                value=""
-                onChange={() => {}}
-                placeholder="******"
-                autoComplete="current-password"
-              />
-            </FormField>
-
-            <div className="text-end">
-              <Link
-                href="/forgot-password"
-                className="text-sm hover:underline underline-offset-2"
-              >
-                Forgot your password?
-              </Link>
-            </div>
 
             <button
               type="submit"
