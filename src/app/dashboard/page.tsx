@@ -1,11 +1,47 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { ColumnDef } from "@tanstack/react-table";
+import { Tabs } from "@/components/data-display/Tabs";
+import { Table } from "@/components/data-display/Table";
 import { MenuIcon, SunIcon, UserIcon } from "lucide-react";
-import { DesktopSidebar } from "@/components/sidebar/DesktopSidebar";
+import { Pagination } from "@/components/data-display/Pagination";
 import { MobileSidebar } from "@/components/sidebar/MobileSidebar";
+import { DesktopSidebar } from "@/components/sidebar/DesktopSidebar";
+
+type QuizStatus = "all" | "completed" | "upcoming" | "missed";
+
+const items: { label: string; value: QuizStatus }[] = [
+  { label: "All", value: "all" },
+  { label: "Missed", value: "missed" },
+  { label: "Completed", value: "completed" },
+  { label: "Upcoming", value: "upcoming" },
+];
+
+const data = [{ id: "1", name: "John Doe", email: "john.doe@gmail.com" }];
 
 export default function DashboardPage() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const [rpp, setRpp] = useState(10);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(10);
+  const [totalPages, setTotalPages] = useState(10);
+  const [selectedStatus, setSelectedStatus] = useState<QuizStatus>("all");
+
+  const columns = useMemo<ColumnDef<{ name: string; email: string }>[]>(
+    () => [
+      {
+        accessorKey: "name",
+        header: "First Name",
+      },
+      {
+        accessorKey: "email",
+        header: "Email",
+        cell: (info) => <i>{info.getValue<string>()}</i>,
+      },
+    ],
+    [],
+  );
 
   return (
     <div className="flex min-h-svh">
@@ -32,8 +68,26 @@ export default function DashboardPage() {
           </div>
         </header>
 
-        <main className="flex-1 p-6 lg:p-8 flex items-center justify-center">
-          DASHBOARD
+        <main className="flex-1 p-6 lg:p-8 flex flex-col gap-4">
+          <Tabs
+            items={items}
+            value={selectedStatus}
+            onChange={setSelectedStatus}
+          />
+
+          <div className="w-full flex flex-col items-center bg-light p-6 rounded-lg">
+            <Table data={data} columns={columns} isLoading={false} />
+
+            <Pagination
+              isLoading={false}
+              page={page}
+              rpp={rpp}
+              total={total}
+              totalPages={totalPages}
+              onPageChange={setPage}
+              onRppChange={setRpp}
+            />
+          </div>
         </main>
       </div>
     </div>

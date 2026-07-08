@@ -1,5 +1,8 @@
 "use client";
 import { useState } from "react";
+import { Checkbox } from "@/components/forms/Checkbox";
+import { Dialog } from "@/components/data-display/Dialog";
+import { Drawer } from "@/components/data-display/Drawer";
 import { MobileSidebar } from "@/components/sidebar/MobileSidebar";
 import { MenuIcon, PanelLeftIcon, SunIcon, UserIcon } from "lucide-react";
 import { CollapsedDesktopSidebar } from "@/components/sidebar/collapse/CollapsedDesktopSidebar";
@@ -7,6 +10,10 @@ import { CollapsedDesktopSidebar } from "@/components/sidebar/collapse/Collapsed
 export default function FeaturesPage() {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+
+  const [checked, setChecked] = useState<boolean>(false);
 
   return (
     <div className="flex min-h-svh">
@@ -40,8 +47,27 @@ export default function FeaturesPage() {
           </div>
         </header>
 
-        <main className="flex-1 p-6 lg:p-8 flex items-center justify-center">
-          FEATURES
+        <main className="relative p-4 space-x-3">
+          <Checkbox
+            id="terms"
+            label="I agree to the terms"
+            checked={checked}
+            onChange={setChecked}
+          />
+
+          <Drawer />
+
+          <>
+            <button onClick={() => setOpenDialog(true)}>Open Dialog</button>
+
+            <Dialog
+              open={openDialog}
+              onClose={() => setOpenDialog(false)}
+              title="Delete Account"
+            >
+              This cannot be undone.
+            </Dialog>
+          </>
         </main>
       </div>
     </div>
