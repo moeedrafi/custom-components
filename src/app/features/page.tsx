@@ -1,8 +1,10 @@
 "use client";
 import { useState } from "react";
+import { Radio } from "@/components/forms/Radio";
 import { Checkbox } from "@/components/forms/Checkbox";
 import { Dialog } from "@/components/data-display/Dialog";
 import { Drawer } from "@/components/data-display/Drawer";
+import { Stepper } from "@/components/navigation/Stepper";
 import { MobileSidebar } from "@/components/sidebar/MobileSidebar";
 import { MenuIcon, PanelLeftIcon, SunIcon, UserIcon } from "lucide-react";
 import { CollapsedDesktopSidebar } from "@/components/sidebar/collapse/CollapsedDesktopSidebar";
@@ -14,6 +16,8 @@ export default function FeaturesPage() {
   const [openDialog, setOpenDialog] = useState<boolean>(false);
 
   const [checked, setChecked] = useState<boolean>(false);
+
+  const [currentStep, setCurrentStep] = useState<number>(1);
 
   return (
     <div className="flex min-h-svh">
@@ -47,7 +51,7 @@ export default function FeaturesPage() {
           </div>
         </header>
 
-        <main className="relative p-4 space-x-3">
+        <main className="relative p-4 space-y-6">
           <Checkbox
             id="terms"
             label="I agree to the terms"
@@ -68,6 +72,17 @@ export default function FeaturesPage() {
               This cannot be undone.
             </Dialog>
           </>
+
+          <div className="space-y-4">
+            <Radio name="plan" value="free" label="Free" defaultChecked />
+            <Radio name="plan" value="pro" label="Pro" />
+          </div>
+
+          <Stepper
+            currentStep={currentStep}
+            onStepChange={setCurrentStep}
+            steps={["Create an account", "Verify email", "Get full access"]}
+          />
         </main>
       </div>
     </div>
