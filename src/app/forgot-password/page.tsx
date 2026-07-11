@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
+import { Input } from "@/components/ui/Input";
 import { FormField } from "@/components/forms/FormField";
-import { TextInput } from "@/components/forms/TextInput";
 import { FormWrapper } from "@/components/forms/FormWrapper";
 
 export default function ForgotPasswordPage() {
@@ -26,7 +26,7 @@ export default function ForgotPasswordPage() {
               required
               error={emailError}
             >
-              <TextInput
+              <Input
                 required
                 id="email"
                 name="email"

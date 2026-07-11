@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { forwardRef } from "react";
 
-export const TextInput = forwardRef<
+export const Input = forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement>
 >(({ className, ...props }, ref) => {
@@ -17,4 +17,4 @@ export const TextInput = forwardRef<
   );
 });
 
-TextInput.displayName = "TextInput";
+Input.displayName = "Input";

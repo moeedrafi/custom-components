@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { TextInput } from "@/components/forms/TextInput";
 import { FormField } from "@/components/forms/FormField";
 import { FormWrapper } from "@/components/forms/FormWrapper";
+import { Input } from "@/components/ui/Input";
 
 export default function LoginPage() {
   const [email, setEmail] = useState<string>("");
@@ -27,7 +27,7 @@ export default function LoginPage() {
               required
               error={emailError}
             >
-              <TextInput
+              <Input
                 required
                 id="email"
                 name="email"
@@ -42,7 +42,7 @@ export default function LoginPage() {
             </FormField>
 
             <FormField label="Password" htmlFor="password" required error="">
-              <TextInput
+              <Input
                 required
                 id="password"
                 name="password"

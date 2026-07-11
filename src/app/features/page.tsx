@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
-import { Radio } from "@/components/forms/Radio";
-import { Checkbox } from "@/components/forms/Checkbox";
-import { Dialog } from "@/components/data-display/Dialog";
-import { Drawer } from "@/components/data-display/Drawer";
+import { Radio } from "@/components/ui/Radio";
+import { Drawer } from "@/components/ui/Drawer";
+import { Dialog } from "@/components/ui/Dialog";
+import { Checkbox } from "@/components/ui/Checkbox";
 import { Stepper } from "@/components/navigation/Stepper";
-import { MobileSidebar } from "@/components/sidebar/MobileSidebar";
+import { MobileSidebar } from "@/components/navigation/sidebar/MobileSidebar";
 import { MenuIcon, PanelLeftIcon, SunIcon, UserIcon } from "lucide-react";
-import { CollapsedDesktopSidebar } from "@/components/sidebar/collapse/CollapsedDesktopSidebar";
+import { CollapsedDesktopSidebar } from "@/components/navigation/sidebar/collapse/CollapsedDesktopSidebar";
 
 export default function FeaturesPage() {
   const [collapsed, setCollapsed] = useState<boolean>(false);

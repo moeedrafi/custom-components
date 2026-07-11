@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
+import { Input } from "@/components/ui/Input";
 import { OTPInput } from "@/components/forms/OTPInput";
-import { TextInput } from "@/components/forms/TextInput";
 import { FormField } from "@/components/forms/FormField";
 import { FormWrapper } from "@/components/forms/FormWrapper";
 
@@ -59,7 +59,7 @@ export default function ResetPasswordPage() {
                 required
                 error=""
               >
-                <TextInput
+                <Input
                   required
                   id="newPassword"
                   name="newPassword"
@@ -77,7 +77,7 @@ export default function ResetPasswordPage() {
                 required
                 error=""
               >
-                <TextInput
+                <Input
                   required
                   id="confirmPassword"
                   name="confirmPassword"

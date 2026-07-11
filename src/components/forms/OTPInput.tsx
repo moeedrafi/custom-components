@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
-import { TextInput } from "./TextInput";
+import { Input } from "@/components/ui/Input";
 
 interface OTPInputProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -70,7 +70,7 @@ export const OTPInput = ({
   return (
     <div className={cn("flex items-center gap-3 m-auto", className)}>
       {Array.from({ length }).map((_, index) => (
-        <TextInput
+        <Input
           key={index}
           ref={(el) => {
             inputRefs.current[index] = el;

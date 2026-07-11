@@ -1,12 +1,12 @@
 "use client";
 import { useMemo, useState } from "react";
 import { ColumnDef } from "@tanstack/react-table";
-import { Tabs } from "@/components/data-display/Tabs";
+import { Tabs } from "@/components/navigation/Tabs";
 import { Table } from "@/components/data-display/Table";
 import { MenuIcon, SunIcon, UserIcon } from "lucide-react";
-import { Pagination } from "@/components/data-display/Pagination";
-import { MobileSidebar } from "@/components/sidebar/MobileSidebar";
-import { DesktopSidebar } from "@/components/sidebar/DesktopSidebar";
+import { Pagination } from "@/components/navigation/Pagination";
+import { MobileSidebar } from "@/components/navigation/sidebar/MobileSidebar";
+import { DesktopSidebar } from "@/components/navigation/sidebar/DesktopSidebar";
 
 type QuizStatus = "all" | "completed" | "upcoming" | "missed";
 

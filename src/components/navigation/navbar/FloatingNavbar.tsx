@@ -1,9 +1,6 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { MenuIcon, SunIcon, XIcon } from "lucide-react";
-import { SidebarContent } from "../sidebar/SidebarContent";
+import { MenuIcon, SunIcon } from "lucide-react";
 
 const routes = [
   {
@@ -28,18 +25,16 @@ const routes = [
   },
 ];
 
-export const SimpleNavbar = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
+export const FloatingNavbar = () => {
   return (
-    <header className="p-6 lg:px-8 bg-light flex items-center justify-between">
+    <header className="sticky top-10 z-50 bg-light/80 mx-auto max-w-5xl py-3 px-6 flex items-center justify-between border border-color shadow-lg rounded-full backdrop-blur-sm">
       <Link href="/" className="flex-1">
         <span className="sr-only">My Company</span>
         <Image
-          src="/vercel.svg"
           alt="logo"
           width={50}
           height={50}
+          src="/vercel.svg"
           className="w-12.5 h-12.5"
         />
       </Link>
@@ -52,10 +47,7 @@ export const SimpleNavbar = () => {
         ))}
       </nav>
 
-      <button
-        onClick={() => setIsOpen(true)}
-        className="sm:hidden hover:text-gray-300"
-      >
+      <button className="sm:hidden hover:text-gray-300">
         <MenuIcon className="size-8" />
       </button>
 
@@ -68,21 +60,6 @@ export const SimpleNavbar = () => {
           Sign In
         </button>
       </div>
-
-      {isOpen && (
-        <div
-          className={`fixed inset-y-0 right-0 z-50 w-80 lg:hidden bg-bg border-r border-color transition-transform ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
-        >
-          <button
-            className="p-2 absolute right-0 hover:text-gray-300"
-            onClick={() => setIsOpen(false)}
-          >
-            <XIcon />
-          </button>
-
-          <SidebarContent />
-        </div>
-      )}
     </header>
   );
 };
